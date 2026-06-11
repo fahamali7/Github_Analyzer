@@ -3,10 +3,12 @@ require("dotenv").config();
 const express = require("express");
 const pool = require("./config/db");
 const {getUser, getRepos} = require('./services/githubService');
+const githubRoutes = require('./routes/githubRoutes');
 
 const app = express();
 
 app.use(express.json());
+app.use("/api/github", githubRoutes);
 
 app.get("/github/:username", async(req, res) =>{
   const {username} = req.params;

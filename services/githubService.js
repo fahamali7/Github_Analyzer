@@ -23,7 +23,7 @@ const getUser = async(username) => {
 
     console.log(`✓ Fetching GitHub user: ${username}`);
     
-    const res = await githubAPI.get(`/users/${username}`);
+    const res = await githubAPI.get(`/user/${username}`);
     
     console.log(`✓ Successfully fetched user: ${username}`);
     return res.data;
@@ -57,7 +57,7 @@ const getRepos = async(username) => {
 
     console.log(`✓ Fetching repos for: ${username}`);
     
-    const res = await githubAPI.get(`/users/${username}/repos`, {
+    const res = await githubAPI.get(`/user/${username}/repos`, {
       params: {
         per_page: 100,
         sort: 'updated'
