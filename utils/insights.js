@@ -1,15 +1,14 @@
 const insights = (user, repos) =>{
 
     const totalStars = repos.reduce((sum, repo) =>{
-        sum += repo.stargazers_count,
-        0
-    });
+        return sum += (repo.stargazers_count || 0)
+    }, 0);
 
     const totalForks = repos.reduce(
-        (sum, repo) =>
-            sum + repo.forks_count,
-        0
-    );
+        (sum, repo) =>{
+            return sum + (repo.forks_count || 0);
+        }, 0);
+
     return {
         username: user.login,
         name: user.name,
@@ -24,11 +23,9 @@ const insights = (user, repos) =>{
         total_stars: totalStars,
         total_forks: totalForks,
 
-        profile_url:
-            user.html_url,
+        profile_url: user.html_url,
 
-        avatar_url:
-            user.avatar_url
+        avatar_url: user.avatar_url
     };
 };
 

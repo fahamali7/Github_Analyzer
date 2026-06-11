@@ -2,53 +2,54 @@ require("dotenv").config();
 
 const express = require("express");
 const pool = require("./config/db");
-const {getUser, getRepos} = require('./services/githubService');
 const githubRoutes = require('./routes/githubRoutes');
 
 const app = express();
 
 app.use(express.json());
+
+//main route  middleware
 app.use("/api/github", githubRoutes);
 
-app.get("/github/:username", async(req, res) =>{
-  const {username} = req.params;
+// app.get("/github/:username", async(req, res) =>{
+//   const {username} = req.params;
 
-  try {
-    const user = await getUser(username);
-    res.json(user);
-  } catch (error) {
-    console.error("Error fetching user:", error.message);
-    res.status(400).json({
-      message: "Error fetching GitHub user",
-      error: error.message
-    });
-  }
-});
+//   try {
+//     const user = await getUser(username);
+//     res.json(user);
+//   } catch (error) {
+//     console.error("Error fetching user:", error.message);
+//     res.status(400).json({
+//       message: "Error fetching GitHub user",
+//       error: error.message
+//     });
+//   }
+// });
 
-app.get("/github/:username/repos", async(req, res) =>{
-  const {username} = req.params;
+// app.get("/github/:username/repos", async(req, res) =>{
+//   const {username} = req.params;
 
-  try {
-    const repos = await getRepos(username);
-    res.json({
-      username,
-      totalRepos: repos.length,
-      repos: repos.map(repo => ({
-        name: repo.name,
-        url: repo.html_url,
-        stars: repo.stargazers_count,
-        language: repo.language,
-        description: repo.description
-      }))
-    });
-  } catch (error) {
-    console.error("Error fetching repos:", error.message);
-    res.status(400).json({
-      message: "Error fetching GitHub repositories",
-      error: error.message
-    });
-  }
-});
+//   try {
+//     const repos = await getRepos(username);
+//     res.json({
+//       username,
+//       totalRepos: repos.length,
+//       repos: repos.map(repo => ({
+//         name: repo.name,
+//         url: repo.html_url,
+//         stars: repo.stargazers_count,
+//         language: repo.language,
+//         description: repo.description
+//       }))
+//     });
+//   } catch (error) {
+//     console.error("Error fetching repos:", error.message);
+//     res.status(400).json({
+//       message: "Error fetching GitHub repositories",
+//       error: error.message
+//     });
+//   }
+// });
 
 app.get("/", async (req, res) => {
   try {

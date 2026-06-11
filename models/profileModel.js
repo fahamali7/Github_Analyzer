@@ -20,7 +20,7 @@ const saveProfile = async (
             avatar_url
         )
         VALUES (
-            ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+            ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
         )
         ON DUPLICATE KEY UPDATE
             name = VALUES(name),
