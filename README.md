@@ -236,32 +236,6 @@ Response:
 ```
 
 ---
-
-## Deployment
-
-This application can be deployed using:
-
-* Render (Backend Hosting)
-* Railway (MySQL Database)
-* AWS EC2
-* DigitalOcean
-* VPS Hosting
-
----
-
-## Future Improvements
-
-* Pagination support
-* Search and filtering
-* Swagger API documentation
-* Repository language analytics
-* Followers/Following ratio analysis
-* Most used programming language
-* GitHub organization insights
-* Caching using Redis
-
----
-
 ## Author
 
 Developed as part of a Backend Assessment using:
